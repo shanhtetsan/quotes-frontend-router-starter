@@ -9,6 +9,10 @@
 //   links. Docs: https://reactrouter.com/start/declarative/navigating#link
 // TODO (Part 1): bring in the quotes data
 
+import {Link} from "react-router-dom";
+
+import quotes from "../data/quotes"
+
 function Home() {
   return (
     <div className="app">
@@ -24,6 +28,18 @@ function Home() {
               .quote-text / .quote-author classes in App.css)
             - make each quote a link to its own detail page
         */}
+
+      {quotes.map((quote) => (
+        <div key={quote.id} className="quote-item">
+          <Link to={`/quotes/${quote.id}`}>
+            <p className="quote-text">{quote.text}</p>
+            <p className="quote-author">- {quote.author}</p>
+          </Link>
+        </div>
+      ))  
+      }
+
+
       </section>
     </div>
   )
